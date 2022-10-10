@@ -20,15 +20,15 @@ router
 
     // POST Create Movie
     .post('/', async(req, res) => {
-        const {image, title, creationDate, calification, gender, type} = req.body;
+        const {image, title, creationDate, calification, genderId, type} = req.body;
 
-        if(!image || !title | !calification || !gender || !type){
+        if(!image || !title | !calification || !genderId || !type){
             return res.status(400).json({
                 error: "All fields are required"
             });
         };
 
-     character.create({image, title, creationDate, calification, gender, type})
+        movie.create({image, title, creationDate, calification, genderId, type})
             .then(data => {
                 res.status(201).send(`Movie ${data.title} succesfully created`);
             })
